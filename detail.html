@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>建筑详情 - 华夏营造</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="detail-page">
+  <header class="detail-header">
+    <a href="dashboard.html" class="btn-back">← 返回大屏</a>
+    <h1 id="detailTitle">建筑详情</h1>
+    <nav class="detail-nav">
+      <a href="overview.html">营造拾趣</a>
+      <a href="timeline.html">时间轴</a>
+      <a href="craft.html">工艺</a>
+    </nav>
+  </header>
+
+  <main class="detail-main">
+    <div id="detailContent">
+      <!-- 由 detail.js 动态渲染 -->
+    </div>
+    <div id="detailNotFound" class="detail-not-found" style="display:none;">
+      <p>未找到该建筑信息</p>
+      <a href="index.html" class="btn-back">返回首页</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-center">数据来源：《营造法式》《清式营造则例》及各地文物保护名录 · 建筑示意图采用公开图片</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+# 将 AI 生成的建筑示意图放入此文件夹
+# 例如：hongcun.jpg、zhaozhou_bridge.jpg 等
+# 然后在 data.js 中设置对应建筑的 imageUrl: 'images/xxx.jpg'

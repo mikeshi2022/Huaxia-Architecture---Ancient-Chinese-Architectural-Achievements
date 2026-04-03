@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>营造拾趣 - 华夏营造</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-item">首页</a>
+      <a href="dashboard.html" class="nav-item">数据大屏</a>
+      <a href="topics.html" class="nav-item">四大专题</a>
+      <a href="craft.html" class="nav-item">建筑工艺</a>
+      <a href="timeline.html" class="nav-item">朝代时间轴</a>
+      <a href="overview.html" class="nav-item active">营造拾趣</a>
+      <a href="ai-chat.html" class="nav-item">营造助手</a>
+    </nav>
+    <div class="header-content">
+      <h1>华夏营造</h1>
+      <p class="subtitle">营造拾趣 · 故事 · 文学 · 知识</p>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <div class="stories-page">
+      <!-- Tab 导航 -->
+      <div class="story-tabs" role="tablist">
+        <button type="button" class="story-tab active" data-tab="today" role="tab" aria-selected="true">今日一筑</button>
+        <button type="button" class="story-tab" data-tab="stories" role="tab" aria-selected="false">营造故事</button>
+        <button type="button" class="story-tab" data-tab="literature" role="tab" aria-selected="false">建筑与文学</button>
+        <button type="button" class="story-tab" data-tab="quiz" role="tab" aria-selected="false">知识小测</button>
+      </div>
+
+      <!-- Tab 内容 -->
+      <div class="story-tab-panels">
+        <!-- 今日一筑：大图+悬浮信息 -->
+        <section class="story-tab-panel active" id="panel-today" role="tabpanel">
+          <div class="today-hero-block">
+            <div class="today-hero-wrap" id="todayHeroWrap">
+              <span class="today-solar-badge" id="todaySolarBadge" aria-label="当前节气"></span>
+              <div class="today-silhouette" aria-hidden="true"></div>
+              <a href="#" class="today-hero-link" id="todayBuildingLink">
+                <div class="today-hero-bg today-hero-bg-a" id="todayBuildingImageA"></div>
+                <div class="today-hero-bg today-hero-bg-b" id="todayBuildingImageB"></div>
+                <div class="today-hero-overlay"></div>
+                <div class="today-hero-info">
+                  <span class="today-hero-badge today-hero-item" id="todayDateLabel">今日 · 每日推荐</span>
+                  <h3 class="today-hero-title today-hero-item" id="todayBuildingName">加载中…</h3>
+                  <p class="today-hero-meta today-hero-item" id="todayBuildingMeta"></p>
+                  <p class="today-hero-desc today-hero-item" id="todayBuildingDesc"></p>
+                  <span class="today-hero-cta today-hero-item">查看详情 →</span>
+                </div>
+              </a>
+            </div>
+            <aside class="today-map-glance" aria-label="今日建筑位置示意">
+              <div class="today-map-glance-head">
+                <span class="today-map-glance-title">地图一瞥</span>
+                <span class="today-map-glance-hint">与数据大屏同源示意</span>
+              </div>
+              <div class="today-mini-map" id="todayMiniMap" role="img" aria-label="中国建筑分布示意"></div>
+              <p class="today-map-caption" id="todayMapCaption"></p>
+              <a href="dashboard.html" class="today-map-link" id="todayMapDashboardLink">打开数据大屏地图 →</a>
+            </aside>
+          </div>
+          <div class="story-hero-actions">
+            <button type="button" class="quiz-btn" id="todayRefresh">
+              <span class="today-refresh-text">换一筑</span>
+              <span class="today-refresh-loading" style="display:none;">正在加载…</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 营造故事 -->
+        <section class="story-tab-panel" id="panel-stories" role="tabpanel" hidden>
+          <div class="story-cards" id="storyCards"></div>
+        </section>
+
+        <!-- 建筑与文学 -->
+        <section class="story-tab-panel" id="panel-literature" role="tabpanel" hidden>
+          <div class="literature-cards" id="literatureCards"></div>
+        </section>
+
+        <!-- 建筑知识小测 -->
+        <section class="story-tab-panel" id="panel-quiz" role="tabpanel" hidden>
+          <div class="quiz-wrap">
+            <div class="quiz-progress-steps" id="quizProgressSteps" aria-label="答题进度"></div>
+            <div class="quiz-progress" id="quizProgress"></div>
+            <div class="quiz-question" id="quizQuestion"></div>
+            <div class="quiz-options" id="quizOptions"></div>
+            <div class="quiz-explanation" id="quizExplanation" style="display:none;"></div>
+            <div class="quiz-result" id="quizResult" style="display:none;"></div>
+            <button type="button" class="quiz-btn" id="quizNext">下一题</button>
+            <button type="button" class="quiz-btn quiz-restart" id="quizRestart" style="display:none;">再测一次</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-center">数据来源：《营造法式》《清式营造则例》及各地文物保护名录</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/overview.js"></script>
+</body>
+</html>

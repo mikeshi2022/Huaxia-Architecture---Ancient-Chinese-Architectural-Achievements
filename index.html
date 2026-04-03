@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>华夏营造 - 中国古代建筑成就 · 1911年以前</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body class="home-page">
+  <header class="header header-home">
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-item active">首页</a>
+      <a href="dashboard.html" class="nav-item">数据大屏</a>
+      <a href="topics.html" class="nav-item">四大专题</a>
+      <a href="craft.html" class="nav-item">建筑工艺</a>
+      <a href="timeline.html" class="nav-item">朝代时间轴</a>
+      <a href="overview.html" class="nav-item">营造拾趣</a>
+      <a href="ai-chat.html" class="nav-item">营造助手</a>
+    </nav>
+    <div class="header-content">
+      <h1>华夏营造</h1>
+      <p class="subtitle">中国古代建筑成就 · 1911年以前</p>
+    </div>
+  </header>
+
+  <div class="explore-transition-overlay" id="exploreTransitionOverlay" aria-hidden="true">
+    <span class="explore-transition-text" id="exploreTransitionText"></span>
+  </div>
+  <main class="home-main">
+    <!-- Hero 区域 -->
+    <section class="home-hero">
+      <div class="hero-video-wrap">
+        <video class="hero-video active" autoplay muted loop playsinline data-src="https://videos.pexels.com/video-files/2805042/2805042-hd_1920_1080_30fps.mp4"></video>
+        <video class="hero-video" muted loop playsinline data-src="https://videos.pexels.com/video-files/6308043/6308043-hd_1920_1080_30fps.mp4"></video>
+        <video class="hero-video" muted loop playsinline data-src="https://videos.pexels.com/video-files/2865303/2865303-uhd_2560_1440_30fps.mp4"></video>
+        <video class="hero-video" muted loop playsinline data-src="https://videos.pexels.com/video-files/6691376/6691376-uhd_2560_1440_24fps.mp4"></video>
+        <div class="hero-bg hero-video-fallback" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Forbidden_City_View.jpg/1920px-Forbidden_City_View.jpg')"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">华夏营造</h1>
+        <p class="hero-subtitle">中国古代建筑成就 · 民居 · 官府 · 皇宫 · 桥梁</p>
+        <p class="hero-desc">探索1911年以前的中国古代建筑，感受斗拱榫卯、飞檐马头墙的营造智慧</p>
+        <a href="dashboard.html" class="hero-cta">开始探索 →</a>
+      </div>
+    </section>
+
+    <!-- 项目简介 -->
+    <section class="home-intro">
+      <div class="home-container">
+        <h2 class="home-section-title">关于本项目</h2>
+        <p class="home-intro-text">本项目基于《营造法式》《清式营造则例》及各地文物保护名录，收录49处中国古代建筑，涵盖民居、官府、皇宫、桥梁四大类型。通过数据可视化、交互式地图、工艺词云、朝代时间轴等形式，展现中国古代建筑的分布、技艺与历史脉络。</p>
+      </div>
+    </section>
+
+    <!-- 建筑分布预览 -->
+    <section class="home-map-section">
+      <div class="home-container">
+        <h2 class="home-section-title">建筑分布预览</h2>
+        <p class="home-section-desc">点击省份进入数据大屏探索 · 49处建筑分布全国</p>
+        <div class="home-map-preview">
+          <div class="home-map-chart" id="homeMapChart"></div>
+          <div class="home-map-stats">
+            <div class="home-map-type-block">
+              <div class="home-map-type-header">
+                <span class="home-map-type-title">四类营造</span>
+                <span class="home-map-type-divider"></span>
+              </div>
+              <div class="home-map-type-list" id="homeMapTypeList"></div>
+            </div>
+            <div class="home-map-province-block">
+              <div class="home-map-province-header">
+                <span class="home-map-province-title">分布省份</span>
+                <span class="home-map-province-divider"></span>
+              </div>
+              <div class="home-map-province-list" id="homeMapProvinceList"></div>
+            </div>
+            <a href="dashboard.html" class="home-map-cta">进入数据大屏 →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 探索入口：卷轴画轴 + 探索路线 -->
+    <section class="home-nav-section">
+      <div class="home-container">
+        <h2 class="home-section-title">探索入口</h2>
+        <p class="home-section-desc">从地图到技艺，循着营造智慧展开探索</p>
+
+        <div class="scroll-wrap">
+          <div class="scroll-roller scroll-roller-left"></div>
+          <div class="scroll-canvas">
+            <div class="explore-route" aria-hidden="true">
+              <svg class="route-svg" viewBox="0 0 1000 360" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="rgba(212,168,75,0.25)" />
+                    <stop offset="100%" stop-color="rgba(212,168,75,0.55)" />
+                  </linearGradient>
+                  <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="rgba(212,168,75,0.5)" />
+                  </marker>
+                </defs>
+                <path class="route-path" d="M 120 100 L 500 100 L 880 100 Q 700 180 120 260 L 500 260 L 880 260" fill="none" stroke="url(#routeGrad)" stroke-width="2" stroke-dasharray="10 8" stroke-linecap="round" marker-end="url(#arrowhead)" />
+              </svg>
+            </div>
+
+            <div class="explore-cards">
+              <a href="dashboard.html" class="explore-card" data-step="1" data-target="数据大屏">
+                <span class="explore-step">01</span>
+                <span class="explore-icon explore-icon-svg" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="20"/><rect x="18" y="18" width="12" height="12" transform="rotate(45 24 24)" stroke-width="1.2"/><line x1="24" y1="4" x2="24" y2="10"/><line x1="24" y1="38" x2="24" y2="44"/><line x1="4" y1="24" x2="10" y2="24"/><line x1="38" y1="24" x2="44" y2="24"/><line x1="9.2" y1="9.2" x2="13.5" y2="13.5"/><line x1="34.5" y1="34.5" x2="38.8" y2="38.8"/><line x1="34.5" y1="9.2" x2="38.8" y2="13.5"/><line x1="9.2" y1="34.5" x2="13.5" y2="38.8"/></svg>
+                </span>
+                <span class="explore-title">数据大屏</span>
+                <span class="explore-desc">从地图出发，看建筑如何分布</span>
+              </a>
+              <a href="topics.html" class="explore-card" data-step="2" data-target="四大专题">
+                <span class="explore-step">02</span>
+                <span class="explore-icon explore-icon-svg" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6v10"/><path d="M24 16c-5 0-8 4-8 8v2"/><path d="M24 16c5 0 8 4 8 8v2"/><path d="M16 26h16"/><path d="M14 34c0-4 4-8 10-8"/><path d="M34 34c0-4-4-8-10-8"/><path d="M18 26v8"/><path d="M24 26v8"/><path d="M30 26v8"/></svg>
+                </span>
+                <span class="explore-title">四大专题</span>
+                <span class="explore-desc">从民居到皇宫，体悟营造智慧</span>
+              </a>
+              <a href="craft.html" class="explore-card" data-step="3" data-target="建筑工艺">
+                <span class="explore-step">03</span>
+                <span class="explore-icon explore-icon-svg" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="28" width="32" height="8" rx="1"/><path d="M24 28V8"/><path d="M16 28V16"/><path d="M32 28V16"/><path d="M12 16h8"/><path d="M28 16h8"/><path d="M20 8h8"/><path d="M14 12l4-4 4 4"/><path d="M26 12l4-4 4 4"/></svg>
+                </span>
+                <span class="explore-title">建筑工艺</span>
+                <span class="explore-desc">斗拱榫卯飞檐，一窥技艺密码</span>
+              </a>
+              <a href="timeline.html" class="explore-card" data-step="4" data-target="朝代时间轴">
+                <span class="explore-step">04</span>
+                <span class="explore-icon explore-icon-svg" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="12" width="32" height="24" rx="2"/><path d="M8 20h32"/><path d="M8 28h32"/><path d="M14 16v16"/><path d="M20 16v16"/><path d="M26 16v16"/><path d="M32 16v16"/><ellipse cx="24" cy="24" rx="4" ry="2" fill="currentColor" stroke="none" opacity="0.5"/></svg>
+                </span>
+                <span class="explore-title">朝代时间轴</span>
+                <span class="explore-desc">穿越隋唐宋金元明清</span>
+              </a>
+              <a href="overview.html" class="explore-card" data-step="5" data-target="营造拾趣">
+                <span class="explore-step">05</span>
+                <span class="explore-icon explore-icon-svg" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="28" width="32" height="12" rx="1"/><path d="M12 28V16"/><path d="M24 28V12"/><path d="M36 28V16"/><path d="M12 16h8"/><path d="M28 16h8"/><path d="M20 12h8"/><circle cx="12" cy="12" r="2"/><circle cx="24" cy="8" r="2"/><circle cx="36" cy="12" r="2"/></svg>
+                </span>
+                <span class="explore-title">营造拾趣</span>
+                <span class="explore-desc">今日一筑、营造故事、建筑与文学</span>
+              </a>
+              <a href="ai-chat.html" class="explore-card" data-step="6" data-target="营造助手">
+                <span class="explore-step">06</span>
+                <span class="explore-icon explore-icon-svg" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="22" r="4"/><circle cx="30" cy="22" r="4"/><path d="M14 32c0-4 2-8 6-8h8c4 0 6 4 6 8"/><path d="M12 14h4"/><path d="M32 14h4"/><path d="M18 8l2-4 2 4"/><path d="M28 8l2-4 2 4"/></svg>
+                </span>
+                <span class="explore-title">营造助手</span>
+                <span class="explore-desc">有问必答，专注中国古代建筑</span>
+              </a>
+            </div>
+
+            <div class="explore-random-wrap">
+              <button type="button" class="explore-random" id="exploreRandom">随机探索</button>
+            </div>
+          </div>
+          <div class="scroll-roller scroll-roller-right"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 精选建筑 -->
+    <section class="home-featured-section">
+      <div class="home-container">
+        <h2 class="home-section-title">精选建筑</h2>
+        <div class="home-featured-grid" id="homeFeaturedBuildings"></div>
+      </div>
+    </section>
+
+    <!-- 数据概览 -->
+    <section class="home-stats-section">
+      <div class="home-container">
+        <h2 class="home-section-title">数据概览</h2>
+        <div class="home-stats-grid">
+          <div class="home-stat-item">
+            <span class="home-stat-num" id="homeStatBuildings">49</span>
+            <span class="home-stat-label">建筑总数</span>
+          </div>
+          <div class="home-stat-item">
+            <span class="home-stat-num" id="homeStatProvinces">0</span>
+            <span class="home-stat-label">涉及省份</span>
+          </div>
+          <div class="home-stat-item">
+            <span class="home-stat-num">18</span>
+            <span class="home-stat-label">工艺技艺</span>
+          </div>
+          <div class="home-stat-item">
+            <span class="home-stat-num">7</span>
+            <span class="home-stat-label">朝代跨度</span>
+          </div>
+        </div>
+        <p style="text-align: center; margin-top: 20px;">
+          <a href="overview.html" class="hero-cta" style="display: inline-block; padding: 10px 24px;">探索营造拾趣 →</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-left">
+      <span class="keyword">斗拱</span>
+      <span class="keyword">榫卯</span>
+      <span class="keyword">飞檐</span>
+      <span class="keyword">马头墙</span>
+      <span class="keyword">石拱</span>
+      <span class="keyword">梁架</span>
+      <span class="keyword">藻井</span>
+      <span class="keyword">砖雕</span>
+    </div>
+    <div class="footer-center">数据来源：《营造法式》《清式营造则例》及各地文物保护名录 · 2026中国大学生计算机设计大赛</div>
+    <div class="footer-right" id="currentTime"></div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

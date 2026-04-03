@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>数据大屏 - 华夏营造</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-item">首页</a>
+      <a href="dashboard.html" class="nav-item active">数据大屏</a>
+      <a href="topics.html" class="nav-item">四大专题</a>
+      <a href="craft.html" class="nav-item">建筑工艺</a>
+      <a href="timeline.html" class="nav-item">朝代时间轴</a>
+      <a href="overview.html" class="nav-item">营造拾趣</a>
+      <a href="ai-chat.html" class="nav-item">营造助手</a>
+    </nav>
+    <div class="header-content">
+      <h1>华夏营造</h1>
+      <p class="subtitle">中国古代建筑成就 · Chinese Ancient Architecture Achievements · 1911年以前</p>
+    </div>
+  </header>
+
+  <div class="filter-bar">
+    <span class="filter-label">建筑类型：</span>
+    <select id="filterType">
+      <option value="all">全部</option>
+      <option value="minju">民居</option>
+      <option value="guanfu">官府</option>
+      <option value="huangong">皇宫</option>
+      <option value="qiaoliang">桥梁</option>
+    </select>
+    <span class="filter-label">朝代：</span>
+    <select id="filterEra">
+      <option value="all">全部</option>
+      <option value="隋">隋</option>
+      <option value="唐">唐</option>
+      <option value="宋">宋</option>
+      <option value="金">金</option>
+      <option value="元">元</option>
+      <option value="明">明</option>
+      <option value="清">清</option>
+    </select>
+    <span class="filter-hint" id="filterHint">点击地图省份筛选 · 点击建筑查看详情</span>
+    <span class="filter-clear-province" id="clearProvince" style="display:none">清除省份</span>
+  </div>
+
+  <main class="main-wrapper">
+    <div class="main-container">
+      <!-- 左侧栏 -->
+      <aside class="left-panel">
+        <div class="panel-box">
+          <div class="panel-title"><span class="title-icon">◆</span> 建筑类型占比</div>
+          <div class="chart-container">
+            <div id="chartPie"></div>
+          </div>
+        </div>
+        <div class="panel-box">
+          <div class="panel-title"><span class="title-icon">◆</span> 建筑列表</div>
+          <div class="building-list" id="buildingList">
+            <div class="building-list-inner" id="buildingListInner"></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 中央区域 -->
+      <section class="center-panel">
+        <div class="panel-box map-box">
+          <div class="map-legend">
+            <span><span class="dot minju"></span>民居</span>
+            <span><span class="dot guanfu"></span>官府</span>
+            <span><span class="dot huangong"></span>皇宫</span>
+            <span><span class="dot qiaoliang"></span>桥梁</span>
+          </div>
+          <div id="chartMap" class="map-chart"></div>
+        </div>
+        <div class="carousel-area" id="carouselArea">
+          <div class="carousel-content" id="carouselContent">
+            <span class="carousel-title" id="carouselTitle">精选建筑</span>
+            <p class="carousel-desc" id="carouselDesc"></p>
+          </div>
+          <a href="#" class="btn-detail" id="carouselDetailBtn">查看详情 →</a>
+        </div>
+      </section>
+
+      <!-- 右侧栏 -->
+      <aside class="right-panel">
+        <div class="panel-box">
+          <div class="panel-title"><span class="title-icon">◆</span> 朝代分布</div>
+          <div class="chart-container">
+            <div id="chartTimeline"></div>
+          </div>
+        </div>
+        <div class="panel-box">
+          <div class="panel-title"><span class="title-icon">◆</span> 省份分布 TOP5</div>
+          <div class="chart-container" style="height: 180px;">
+            <div id="chartProvince"></div>
+          </div>
+        </div>
+        <div class="panel-box">
+          <div class="panel-title"><span class="title-icon">◆</span> 桥梁长度对比</div>
+          <div class="chart-container" style="height: 180px;">
+            <div id="chartBridge"></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- 实景预览全屏弹窗 -->
+  <div class="panorama-modal" id="panoramaModal" aria-hidden="true">
+    <div class="panorama-backdrop" id="panoramaBackdrop"></div>
+    <div class="panorama-modal-box">
+      <div class="panorama-modal-header">
+        <span class="panorama-modal-title" id="panoramaTitle"></span>
+        <button type="button" class="panorama-modal-close" id="panoramaClose" aria-label="关闭">×</button>
+      </div>
+      <div class="panorama-modal-info" id="panoramaInfo"></div>
+      <div class="panorama-modal-viewer" id="panoramaViewerWrap">
+        <div id="panoramaViewer"></div>
+      </div>
+      <div class="panorama-modal-actions">
+        <a href="#" class="btn-panorama-open" id="panoramaOpenBtn" target="_blank" rel="noopener" style="display:none">在新窗口打开实景</a>
+        <a href="#" class="btn-detail panorama-detail-btn" id="panoramaDetailBtn">查看详情 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-left">
+      <span class="keyword">斗拱</span>
+      <span class="keyword">榫卯</span>
+      <span class="keyword">飞檐</span>
+      <span class="keyword">马头墙</span>
+      <span class="keyword">石拱</span>
+      <span class="keyword">梁架</span>
+      <span class="keyword">藻井</span>
+      <span class="keyword">砖雕</span>
+    </div>
+    <div class="footer-center">数据来源：《营造法式》《清式营造则例》及各地文物保护名录 · 建筑示意图采用公开图片</div>
+    <div class="footer-right" id="currentTime"></div>
+  </footer>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.css" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>朝代时间轴 - 华夏营造</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-item">首页</a>
+      <a href="dashboard.html" class="nav-item">数据大屏</a>
+      <a href="topics.html" class="nav-item">四大专题</a>
+      <a href="craft.html" class="nav-item">建筑工艺</a>
+      <a href="timeline.html" class="nav-item active">朝代时间轴</a>
+      <a href="overview.html" class="nav-item">营造拾趣</a>
+      <a href="ai-chat.html" class="nav-item">营造助手</a>
+    </nav>
+    <div class="header-content">
+      <h1>华夏营造</h1>
+      <p class="subtitle">朝代时间轴 · 建筑与朝代对应关系</p>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <div class="topic-header">
+      <h2>朝代与建筑</h2>
+      <p>隋唐至明清，各朝代代表性建筑分布一览（1911年以前）</p>
+    </div>
+    <div class="timeline-page">
+      <div class="timeline-controls">
+        <div class="timeline-filter-row">
+          <span class="filter-label">朝代筛选：</span>
+          <div class="dynasty-pills" id="dynastyPills">
+            <button type="button" class="dynasty-pill active" data-dynasty="">全部</button>
+            <button type="button" class="dynasty-pill" data-dynasty="隋">隋</button>
+            <button type="button" class="dynasty-pill" data-dynasty="唐">唐</button>
+            <button type="button" class="dynasty-pill" data-dynasty="宋">宋</button>
+            <button type="button" class="dynasty-pill" data-dynasty="金">金</button>
+            <button type="button" class="dynasty-pill" data-dynasty="元">元</button>
+            <button type="button" class="dynasty-pill" data-dynasty="明">明</button>
+            <button type="button" class="dynasty-pill" data-dynasty="清">清</button>
+          </div>
+        </div>
+        <div class="timeline-range-row">
+          <span class="filter-label">时间范围：</span>
+          <div class="range-inputs">
+            <div class="range-group">
+              <label class="range-label">起始</label>
+              <input type="range" id="yearStart" min="581" max="1911" value="581" title="起始年份" />
+            </div>
+            <div class="range-group">
+              <label class="range-label">结束</label>
+              <input type="range" id="yearEnd" min="581" max="1911" value="1911" title="结束年份" />
+            </div>
+          </div>
+          <span class="range-display" id="rangeDisplay">581 — 1911 年</span>
+        </div>
+      </div>
+      <div class="timeline-chart">
+        <div id="timelineChart" style="height: 320px;"></div>
+      </div>
+      <div class="timeline-list">
+        <h3>筛选结果 <span id="resultCount" class="result-count"></span></h3>
+        <div id="timelineBuildings"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-center">数据来源：《营造法式》《清式营造则例》及各地文物保护名录</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/timeline.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>建筑工艺 - 华夏营造</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-item">首页</a>
+      <a href="dashboard.html" class="nav-item">数据大屏</a>
+      <a href="topics.html" class="nav-item">四大专题</a>
+      <a href="craft.html" class="nav-item active">建筑工艺</a>
+      <a href="timeline.html" class="nav-item">朝代时间轴</a>
+      <a href="overview.html" class="nav-item">营造拾趣</a>
+      <a href="ai-chat.html" class="nav-item">营造助手</a>
+    </nav>
+    <div class="header-content">
+      <h1>华夏营造</h1>
+      <p class="subtitle">建筑工艺 · 点击球体上的关键词进入技艺介绍</p>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <div class="topic-header">
+      <h2>传统营造技艺</h2>
+      <p>斗拱、榫卯、飞檐、马头墙……词云大小按工艺出现频次，点击进入详细介绍与工艺关系图</p>
+    </div>
+    <div class="craft-page">
+      <div class="craft-sphere-wrap">
+        <div class="craft-tag-cloud" id="craftCloud"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-center">数据来源：《营造法式》《清式营造则例》</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/craft.js"></script>
+</body>
+</html>

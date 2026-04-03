@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>技艺介绍 - 华夏营造</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-item">首页</a>
+      <a href="dashboard.html" class="nav-item">数据大屏</a>
+      <a href="topics.html" class="nav-item">四大专题</a>
+      <a href="craft.html" class="nav-item active">建筑工艺</a>
+      <a href="timeline.html" class="nav-item">朝代时间轴</a>
+      <a href="overview.html" class="nav-item">营造拾趣</a>
+      <a href="ai-chat.html" class="nav-item">营造助手</a>
+    </nav>
+    <div class="header-content">
+      <h1>华夏营造</h1>
+      <p class="subtitle" id="craftSubtitle">技艺介绍</p>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <div class="craft-detail-page">
+      <div class="craft-detail-header">
+        <div class="craft-detail-header-text">
+          <h2 id="craftTitle">工艺名称</h2>
+          <span class="craft-category" id="craftCategory"></span>
+        </div>
+        <div class="craft-detail-hero" id="craftHero">
+          <img id="craftImage" src="" alt="" />
+          <span class="craft-image-placeholder" id="craftImagePlaceholder" style="display:none">暂无图片</span>
+        </div>
+      </div>
+
+      <section class="craft-detail-section">
+        <h3>技艺简介</h3>
+        <p id="craftDesc" class="craft-desc-text"></p>
+      </section>
+
+      <section class="craft-detail-section" id="craftHistorySection">
+        <h3>历史背景</h3>
+        <p id="craftHistory" class="craft-desc-text"></p>
+      </section>
+
+      <section class="craft-detail-section" id="craftDevelopmentSection">
+        <h3>发展历程</h3>
+        <p id="craftDevelopment" class="craft-desc-text"></p>
+      </section>
+
+      <section class="craft-detail-section" id="craftSignificanceSection">
+        <h3>历史意义</h3>
+        <p id="craftSignificance" class="craft-desc-text"></p>
+      </section>
+
+      <section class="craft-detail-section">
+        <h3>代表建筑</h3>
+        <div id="craftBuildings" class="craft-building-list"></div>
+      </section>
+
+      <section class="craft-detail-section">
+        <h3>工艺关系图</h3>
+        <p class="craft-detail-hint">展示该工艺在营造体系中的关联（结构、类型、建筑）</p>
+        <div id="craftRelationChart" class="craft-relation-chart"></div>
+      </section>
+
+      <div class="craft-detail-back">
+        <a href="craft.html" class="btn-back">← 返回工艺词云</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-center">数据来源：《营造法式》《清式营造则例》</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/craft-detail.js"></script>
+</body>
+</html>

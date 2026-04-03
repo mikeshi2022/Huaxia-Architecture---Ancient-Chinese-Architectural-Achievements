@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>营造助手 - 华夏营造 · 中国古代建筑AI问答</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/ai-chat.css" />
+</head>
+<body class="ai-chat-page">
+  <header class="header">
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-item">首页</a>
+      <a href="dashboard.html" class="nav-item">数据大屏</a>
+      <a href="topics.html" class="nav-item">四大专题</a>
+      <a href="craft.html" class="nav-item">建筑工艺</a>
+      <a href="timeline.html" class="nav-item">朝代时间轴</a>
+      <a href="overview.html" class="nav-item">营造拾趣</a>
+      <a href="ai-chat.html" class="nav-item active">营造助手</a>
+    </nav>
+    <div class="header-content">
+      <h1>营造助手</h1>
+      <p class="subtitle">专注中国古代建筑 · 1911年以前 · 有问必答</p>
+    </div>
+  </header>
+
+  <main class="ai-chat-main">
+    <div class="chat-container">
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg chat-msg-bot">
+          <span class="chat-avatar">匠</span>
+          <div class="chat-bubble">
+            <p>您好，我是营造助手，专注于中国古代建筑（1911年以前）的问答。</p>
+            <p>您可以问我：</p>
+            <ul>
+              <li>某座建筑的信息，如「北京故宫」「赵州桥」「宏村」</li>
+              <li>建筑工艺，如「斗拱是什么」「榫卯和飞檐」</li>
+              <li>建筑类型，如「民居有哪些」「桥梁有哪些」</li>
+              <li>朝代分布，如「清代有哪些建筑」</li>
+            </ul>
+            <p>试试输入一个问题吧～</p>
+          </div>
+        </div>
+      </div>
+      <div class="chat-input-wrap">
+        <textarea id="chatInput" placeholder="输入您关于中国古代建筑的问题..." rows="2"></textarea>
+        <button type="button" class="chat-send" id="chatSend" aria-label="发送">
+          <span>发送</span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/ai-chat.js"></script>
+</body>
+</html>

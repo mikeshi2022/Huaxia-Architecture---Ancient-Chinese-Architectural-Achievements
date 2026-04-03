@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>四大专题 - 华夏营造</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-item">首页</a>
+      <a href="dashboard.html" class="nav-item">数据大屏</a>
+      <a href="topics.html" class="nav-item active">四大专题</a>
+      <a href="craft.html" class="nav-item">建筑工艺</a>
+      <a href="timeline.html" class="nav-item">朝代时间轴</a>
+      <a href="overview.html" class="nav-item">营造拾趣</a>
+      <a href="ai-chat.html" class="nav-item">营造助手</a>
+    </nav>
+    <div class="header-content">
+      <h1>华夏营造</h1>
+      <p class="subtitle">从民间到皇家 · 中国古代建筑营造智慧叙事流</p>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <div class="narrative-intro">
+      <p>中国古代建筑遵循礼制等级，从民间民居到官府衙署、皇家宫殿，再到跨越山河的桥梁工程。点击专题展开建筑列表，点击建筑名称查看详情，支持拖拽缩放浏览。</p>
+    </div>
+
+    <div class="topic-tree-container">
+      <div id="topicTreeChart" class="topic-tree-chart"></div>
+    </div>
+  </main>
+
+  <!-- 悬浮窗：建筑介绍 + 3D 球形词云（点击具体建筑卡片弹出） -->
+  <div class="topic-modal" id="topicModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="topic-modal-backdrop" id="modalBackdrop"></div>
+    <div class="topic-modal-content">
+      <div class="topic-modal-header">
+        <h2 id="modalTitle" class="topic-modal-title">建筑简要介绍</h2>
+        <span class="topic-modal-icon" title="信息滚动词云">◉</span>
+        <button type="button" class="topic-modal-close" id="modalClose" aria-label="关闭">×</button>
+      </div>
+      <div class="topic-modal-body">
+        <div class="topic-modal-info">
+          <div class="topic-modal-image" id="modalImage"></div>
+          <div class="topic-modal-text">
+            <h3 id="modalSubtitle"></h3>
+            <p id="modalIntro"></p>
+            <p id="modalDetail"></p>
+            <a id="modalDetailLink" href="#" class="topic-modal-link">查看详情 →</a>
+          </div>
+        </div>
+        <div class="topic-modal-cloud">
+          <div class="topic-cloud-label">建筑工艺与类型词云</div>
+          <div id="tagCloudContainer" class="tagcloud-container"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-center">数据来源：《营造法式》《清式营造则例》及各地文物保护名录</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/topics.js"></script>
+</body>
+</html>

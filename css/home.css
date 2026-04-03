@@ -1,0 +1,665 @@
+/* 首页样式 */
+.home-page .header-home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: transparent;
+  border-bottom-color: rgba(212, 168, 75, 0.3);
+}
+.home-page .header-home .nav-item.active {
+  background: rgba(212, 168, 75, 0.2);
+  border: 1px solid rgba(212, 168, 75, 0.5);
+}
+
+.home-main { padding: 0; }
+
+/* Hero */
+.home-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-video-wrap {
+  position: absolute;
+  inset: 0;
+}
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.hero-video.active {
+  opacity: 1;
+  z-index: 1;
+}
+.hero-video-fallback {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+.hero-video-wrap:has(.hero-video.active) .hero-video-fallback {
+  display: none;
+}
+@keyframes hero-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(26,26,26,0.4) 0%, rgba(26,26,26,0.7) 50%, rgba(26,26,26,0.95) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 40px 24px;
+  max-width: 720px;
+}
+.hero-title {
+  font-size: clamp(2.5em, 6vw, 4em);
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  animation: hero-fade-in 1s ease-out;
+}
+.hero-subtitle {
+  font-size: 1.2em;
+  color: var(--paper);
+  margin-bottom: 12px;
+  opacity: 0.95;
+  animation: hero-fade-in 1s ease-out 0.2s both;
+}
+.hero-desc {
+  font-size: 1em;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  animation: hero-fade-in 1s ease-out 0.4s both;
+}
+.hero-cta {
+  display: inline-block;
+  padding: 14px 32px;
+  background: rgba(212, 168, 75, 0.25);
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  font-size: 1.1em;
+  border-radius: 6px;
+  transition: all 0.3s;
+  animation: hero-fade-in 1s ease-out 0.6s both;
+}
+.hero-cta:hover {
+  background: var(--gold);
+  color: #1a1a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 168, 75, 0.4);
+}
+@keyframes hero-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 通用容器 */
+.home-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 区块标题 */
+.home-section-title {
+  font-size: 1.6em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 12px;
+  letter-spacing: 0.15em;
+}
+.home-section-desc {
+  text-align: center;
+  color: var(--text-light);
+  margin-bottom: 28px;
+  font-size: 0.95em;
+}
+
+/* 项目简介 */
+.home-intro {
+  padding: 60px 24px;
+  background: rgba(26, 26, 26, 0.4);
+}
+.home-intro-text {
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.9;
+  color: var(--text-light);
+  font-size: 1.05em;
+  text-align: center;
+}
+
+/* 建筑分布预览 */
+.home-map-section {
+  padding: 60px 24px;
+}
+.home-map-preview {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  max-width: 960px;
+  margin: 0 auto;
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid rgba(212, 168, 75, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+.home-map-chart {
+  flex: 1;
+  min-width: 0;
+  min-height: 360px;
+}
+.home-map-stats {
+  width: 220px;
+  flex-shrink: 0;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-left: 1px solid rgba(212, 168, 75, 0.2);
+}
+.home-map-type-block { margin-bottom: 4px; }
+.home-map-type-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.home-map-type-title {
+  font-family: "KaiTi", "STKaiti", "SimSun", serif;
+  font-size: 0.95em;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+}
+.home-map-type-divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 168, 75, 0.5) 0%, transparent 100%);
+  position: relative;
+}
+.home-map-type-divider::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -2px;
+  width: 12px;
+  height: 5px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 5'%3E%3Cpath d='M0 2.5 L3 0 L6 2.5 L9 0 L12 2.5' fill='none' stroke='rgba(212,168,75,0.6)' stroke-width='0.8'/%3E%3C/svg%3E") no-repeat;
+}
+.home-map-type-list {
+  font-size: 0.9em;
+  color: var(--paper);
+  font-family: "KaiTi", "STKaiti", "SimSun", serif;
+}
+.home-map-type-list .type-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(212, 168, 75, 0.2);
+  position: relative;
+}
+.home-map-type-list .type-item::before {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 24px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 168, 75, 0.5), transparent);
+}
+.home-map-type-list .type-item:last-child { border-bottom: none; }
+.home-map-type-list .type-item:last-child::before { display: none; }
+.home-map-type-list .type-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.home-map-type-list .type-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+}
+.home-map-type-list .type-icon svg {
+  width: 100%;
+  height: 100%;
+}
+.home-map-type-list .type-name {
+  font-family: "KaiTi", "STKaiti", "SimSun", serif;
+}
+.home-map-type-list .type-count {
+  color: var(--gold);
+  font-weight: 600;
+  font-family: "KaiTi", "STKaiti", "SimSun", serif;
+}
+.home-map-province-block { margin-bottom: 4px; }
+.home-map-province-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.home-map-province-title {
+  font-family: "KaiTi", "STKaiti", "SimSun", serif;
+  font-size: 0.9em;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+}
+.home-map-province-divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 168, 75, 0.4) 0%, transparent 100%);
+}
+.home-map-province-list {
+  font-size: 0.85em;
+  color: var(--text-light);
+  line-height: 1.8;
+  font-family: "KaiTi", "STKaiti", "SimSun", serif;
+}
+.home-map-province-list .province-tag {
+  display: inline-block;
+  margin: 2px 4px 2px 0;
+  padding: 2px 8px;
+  background: rgba(212, 168, 75, 0.15);
+  border-radius: 4px;
+  color: var(--paper);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.home-map-province-list .province-tag:hover {
+  background: rgba(212, 168, 75, 0.3);
+  color: var(--gold);
+}
+.home-map-cta {
+  display: block;
+  text-align: center;
+  padding: 12px 20px;
+  background: rgba(212, 168, 75, 0.2);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 1em;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: auto;
+  transition: all 0.25s;
+}
+.home-map-cta:hover {
+  background: var(--gold);
+  color: #1a1a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 168, 75, 0.3);
+}
+@media (max-width: 768px) {
+  .home-map-preview { flex-direction: column; }
+  .home-map-chart { min-height: 280px; }
+  .home-map-stats { width: 100%; border-left: none; border-top: 1px solid rgba(212, 168, 75, 0.2); padding: 20px; }
+}
+
+/* 探索入口：卷轴画轴 + 探索路线 */
+.home-nav-section {
+  padding: 60px 24px;
+  background: linear-gradient(180deg, rgba(26,26,26,0.5) 0%, rgba(35,45,40,0.6) 50%, rgba(26,26,26,0.5) 100%);
+}
+.home-nav-section .home-section-desc {
+  margin-bottom: 32px;
+}
+
+.scroll-wrap {
+  display: flex;
+  align-items: stretch;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+.scroll-roller {
+  width: 28px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #3d3220 0%, #2a2418 30%, #1f1a12 50%, #2a2418 70%, #3d3220 100%);
+  border-radius: 14px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.4), 0 2px 12px rgba(0,0,0,0.3);
+  position: relative;
+}
+.scroll-roller::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 60%;
+  background: linear-gradient(90deg, #4a3d28, #6b5a3d, #4a3d28);
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(212,168,75,0.3);
+}
+.scroll-canvas {
+  flex: 1;
+  min-width: 0;
+  padding: 36px 28px 40px;
+  background: linear-gradient(135deg, #2a2520 0%, #1f1c18 50%, #252119 100%);
+  border: 2px solid rgba(212, 168, 75, 0.35);
+  border-top: none;
+  border-bottom: none;
+  position: relative;
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.2);
+}
+.scroll-canvas::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.explore-route {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.7;
+}
+.route-svg {
+  width: 100%;
+  height: 100%;
+}
+.route-path {
+  animation: route-dash 20s linear infinite;
+}
+@keyframes route-dash {
+  to { stroke-dashoffset: -18; }
+}
+
+.explore-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 1100px) {
+  .explore-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .explore-cards { grid-template-columns: repeat(2, 1fr); }
+  .explore-route { display: none; }
+  .scroll-roller { width: 20px; }
+  .scroll-canvas { padding: 24px 16px 28px; }
+}
+@media (max-width: 500px) {
+  .explore-cards { grid-template-columns: 1fr; }
+  .scroll-wrap { flex-direction: column; }
+  .scroll-roller {
+    width: 100%;
+    height: 14px;
+    border-radius: 7px;
+  }
+  .scroll-roller::before {
+    width: 50%;
+    height: 6px;
+  }
+}
+
+.explore-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
+  background: rgba(45, 90, 74, 0.15);
+  border: 1px solid rgba(212, 168, 75, 0.25);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--paper);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+.explore-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(212,168,75,0.08) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.explore-card:hover {
+  background: rgba(212, 168, 75, 0.12);
+  border-color: rgba(212, 168, 75, 0.6);
+  transform: perspective(1000px) translateY(-6px) scale(1.02) rotateX(2deg);
+  box-shadow: 0 12px 32px rgba(212, 168, 75, 0.25), 0 0 24px rgba(212, 168, 75, 0.1);
+}
+.explore-card:hover::before {
+  opacity: 1;
+}
+.explore-step {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 0.7em;
+  color: rgba(212, 168, 75, 0.5);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+.explore-icon {
+  font-size: 2em;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  transition: transform 0.4s;
+}
+.explore-icon-svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2em;
+  height: 2.2em;
+  color: var(--gold);
+}
+.explore-icon-svg svg {
+  width: 100%;
+  height: 100%;
+}
+.explore-card:hover .explore-icon {
+  transform: scale(1.15);
+}
+.explore-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 8px;
+  letter-spacing: 0.08em;
+}
+.explore-desc {
+  font-size: 0.8em;
+  color: var(--text-light);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.explore-random-wrap {
+  text-align: center;
+  margin-top: 28px;
+  position: relative;
+  z-index: 2;
+}
+.explore-random {
+  padding: 10px 24px;
+  background: transparent;
+  border: 1px dashed rgba(212, 168, 75, 0.5);
+  color: var(--gold);
+  font-size: 0.95em;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.explore-random:hover {
+  background: rgba(212, 168, 75, 0.15);
+  border-style: solid;
+  border-color: var(--gold);
+}
+.explore-random:active {
+  transform: scale(0.96);
+}
+.explore-random.random-spinning {
+  animation: random-spin 0.6s ease-out;
+}
+@keyframes random-spin {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.08); }
+  60% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+.explore-card.random-highlight {
+  animation: random-highlight 0.4s ease-out;
+}
+@keyframes random-highlight {
+  0% { box-shadow: 0 0 0 0 rgba(212, 168, 75, 0.6); }
+  50% { box-shadow: 0 0 24px 8px rgba(212, 168, 75, 0.5); }
+  100% { box-shadow: 0 0 32px 4px rgba(212, 168, 75, 0.3); }
+}
+.explore-card.random-selected {
+  animation: random-selected 0.6s ease-out forwards;
+  z-index: 10;
+}
+@keyframes random-selected {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 168, 75, 0.8); }
+  40% { transform: scale(1.1); box-shadow: 0 0 40px 12px rgba(212, 168, 75, 0.6); }
+  100% { transform: scale(1.05); box-shadow: 0 0 48px 16px rgba(212, 168, 75, 0.5); }
+}
+
+/* 随机探索过渡遮罩 */
+.explore-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(26, 26, 26, 0);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-out, background 0.5s ease-out;
+}
+.explore-transition-overlay.active {
+  pointer-events: auto;
+  opacity: 1;
+  background: rgba(26, 26, 26, 0.95);
+}
+.explore-transition-text {
+  font-size: 1.8em;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+  transition: opacity 0.4s ease-out 0.2s, transform 0.4s ease-out 0.2s;
+}
+.explore-transition-overlay.active .explore-transition-text {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* 精选建筑 */
+.home-featured-section {
+  padding: 60px 24px;
+}
+.home-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.home-featured-card {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 168, 75, 0.25);
+  background: rgba(26, 26, 26, 0.6);
+  text-decoration: none;
+  color: var(--paper);
+  transition: all 0.3s;
+}
+.home-featured-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+.home-featured-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  background: rgba(45, 90, 74, 0.4);
+}
+.home-featured-card-body {
+  padding: 16px;
+}
+.home-featured-card-title {
+  font-size: 1.1em;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.home-featured-card-meta {
+  font-size: 0.85em;
+  color: var(--text-light);
+}
+
+/* 数据概览 */
+.home-stats-section {
+  padding: 60px 24px;
+  background: rgba(26, 26, 26, 0.4);
+}
+.home-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .home-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.home-stat-item {
+  text-align: center;
+  padding: 24px 16px;
+  background: rgba(45, 90, 74, 0.2);
+  border: 1px solid rgba(212, 168, 75, 0.25);
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+.home-stat-item:hover {
+  border-color: rgba(212, 168, 75, 0.5);
+  background: rgba(212, 168, 75, 0.08);
+}
+.home-stat-num {
+  display: block;
+  font-size: 2.2em;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.home-stat-label {
+  font-size: 0.9em;
+  color: var(--text-light);
+}
