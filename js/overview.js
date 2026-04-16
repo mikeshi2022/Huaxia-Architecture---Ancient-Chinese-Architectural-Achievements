@@ -33,6 +33,7 @@
       dynasty: '隋',
       image: 'images/featured/zhaozhou-bridge.jpg',
       excerpt: '隋大业年间，匠师李春在河北赵县设计建造了世界上第一座敞肩石拱桥。大拱两肩各开两小拱，既减自重又利泄洪，比欧洲同类结构早约1200年。',
+      // AI辅助修改：豆包，2026-02-15
       full: '赵州桥由隋代匠师李春设计建造，距今1400余年。其敞肩拱设计开创世界先河——主拱两侧拱肩处开设小拱，既减轻桥身自重、节省石料，又能在洪水时增加泄洪能力。茅以升在《中国石拱桥》中称其为"中国工程界一绝"。',
       link: 'detail.html?name=赵州桥'
     },
@@ -62,6 +63,51 @@
       excerpt: '客家人南迁闽粤赣交界，为抵御匪患、聚族而居，以生土夯筑圆形或方形土楼。外墙厚达一米余，兼具防御与聚居功能。',
       full: '福建土楼以永定、南靖、华安最为集中。土楼冬暖夏凉、抗震性强，内部木构架、祖堂居中。永定土楼群2008年列入世界文化遗产，被誉为"东方古城堡"。',
       link: 'detail.html?name=福建土楼'
+    },
+    {
+      title: '紫禁城中轴与故宫',
+      building: '北京故宫',
+      dynasty: '明清',
+      image: 'images/detailed_images/宫殿图片/北京故宫/太和殿.jpg',
+      excerpt: '明清两代皇宫，木构宫殿沿中轴线铺开，太和殿、中和殿、保和殿体现礼制与营造的最高规制，为世界现存最大古代木构建筑群之一。',
+      full: '',
+      link: 'detail.html?name=北京故宫'
+    },
+    {
+      title: '卢沟晓月与石桥',
+      building: '卢沟桥',
+      dynasty: '金',
+      image: 'images/detailed_images/桥/卢沟桥.jpg',
+      excerpt: '金代十一孔联拱长桥，栏板石狮数以百计，曾为出入京师要道，「卢沟晓月」列入燕京八景。',
+      full: '',
+      link: 'detail.html?name=卢沟桥'
+    },
+    {
+      title: '避暑山庄与康熙造园',
+      building: '承德避暑山庄',
+      dynasty: '清',
+      image: 'images/detailed_images/宫殿图片/承德避暑山庄/45c5f176a2905ece55e16d547a1b5708.jpg',
+      excerpt: '清代皇家行宫园林，融宫殿、湖区、山区、草原于一处，是中国现存规模最大的古典皇家园林之一。',
+      full: '',
+      link: 'detail.html?name=承德避暑山庄'
+    },
+    {
+      title: '圜丘与祈年殿',
+      building: '天坛',
+      dynasty: '明',
+      image: 'images/detailed_images/宫殿图片/天坛/天坛石雕.jpg',
+      excerpt: '明清皇帝祭天之所，祈年殿、圜丘、回音壁将坛庙建筑与声学意匠结合为一。',
+      full: '',
+      link: 'detail.html?name=天坛'
+    },
+    {
+      title: '十八梭船廿四洲',
+      building: '广济桥',
+      dynasty: '宋-明',
+      image: 'images/detailed_images/桥/广济桥.jpg',
+      excerpt: '潮州韩江上的启闭式石桥，石梁与浮舟相济，「十八梭船廿四洲」被誉为中国四大古桥之一。',
+      full: '',
+      link: 'detail.html?name=广济桥'
     }
   ];
 
@@ -447,10 +493,24 @@
       <div class="book-wrap">
         <div class="book-flipbook" id="bookFlipbook">
           <div class="book-page-left" id="bookPageLeft">
-            <div class="book-left-content">
-              <div class="book-left-seal">华夏营造</div>
-              <div class="book-left-title">营造故事</div>
-              <div class="book-left-sub">匠人 · 建筑 · 智慧</div>
+            <div class="book-left-content book-left-with-toc">
+              <div class="book-left-top">
+                <div class="book-left-seal">华夏营造</div>
+                <div class="book-left-title">营造故事</div>
+                <div class="book-left-sub">匠人 · 建筑 · 智慧</div>
+              </div>
+              <div class="book-left-toc">
+                <p class="book-toc-tagline">精选篇目，持续增补</p>
+                <ul class="book-toc-list">
+                  ${STORIES.map((s, i) => `
+                    <li>
+                      <button type="button" class="book-toc-item" data-page="${i + 1}">
+                        <span class="book-toc-idx">${i + 1}</span>
+                        <span class="book-toc-title">${s.title}</span>
+                      </button>
+                    </li>`).join('')}
+                </ul>
+              </div>
             </div>
           </div>
           ${STORIES.map((s, i) => `
@@ -459,13 +519,16 @@
                 <div class="book-page-front">
                   <div class="book-page-header">
                     <span class="book-page-dynasty">${s.dynasty || ''}</span>
-                    <span class="book-page-num">${i + 1} / ${total}</span>
+                    <div class="book-page-meta">
+                      <span class="book-page-num">${s.building} · 第 ${i + 1} 篇 / 共 ${total} 篇</span>
+                      <span class="book-page-hint">精选篇目，持续增补</span>
+                    </div>
                   </div>
                   <h3 class="book-page-title">${s.title}</h3>
                   <div class="book-page-img" style="background-image:url('${s.image || ''}')"></div>
                   <p class="book-page-excerpt">${s.excerpt}</p>
                   <a href="${s.link}" class="book-page-link">了解 ${s.building} →</a>
-                  ${i < total - 1 ? '<button type="button" class="book-page-next">下一页</button>' : '<button type="button" class="book-page-next" data-action="restart">卷终 · 从头翻阅</button>'}
+                  ${i < total - 1 ? '<button type="button" class="book-page-next">下一篇</button>' : '<button type="button" class="book-page-next" data-action="restart">卷终 · 从头翻阅</button>'}
                 </div>
                 <div class="book-page-back">
                   <div class="book-page-back-pattern"></div>
@@ -476,9 +539,15 @@
           `).join('')}
         </div>
         <div class="book-controls">
-          <button type="button" class="book-btn book-btn-prev" id="bookPrev">上一页</button>
-          <span class="book-indicator" id="bookIndicator">1 / ${total}</span>
-          <button type="button" class="book-btn book-btn-next" id="bookNext">下一页</button>
+          <button type="button" class="book-btn book-btn-prev" id="bookPrev">
+            <span class="book-btn-line">上一篇</span>
+            <span class="book-btn-ref" id="bookPrevRef"></span>
+          </button>
+          <span class="book-indicator" id="bookIndicator"></span>
+          <button type="button" class="book-btn book-btn-next" id="bookNext">
+            <span class="book-btn-line">下一篇</span>
+            <span class="book-btn-ref" id="bookNextRef"></span>
+          </button>
         </div>
       </div>
     `;
@@ -495,6 +564,21 @@
     let currentPage = 1;
     const total = STORIES.length;
 
+    function updateBookChrome() {
+      const story = STORIES[currentPage - 1];
+      if (indicator) {
+        indicator.textContent = story.building + ' · 第 ' + currentPage + ' 篇 / 共 ' + total + ' 篇';
+      }
+      const pref = document.getElementById('bookPrevRef');
+      const nref = document.getElementById('bookNextRef');
+      if (pref) {
+        pref.textContent = currentPage > 1 ? '《' + STORIES[currentPage - 2].title + '》' : '';
+      }
+      if (nref) {
+        nref.textContent = currentPage < total ? '《' + STORIES[currentPage].title + '》' : '';
+      }
+    }
+
     function goToPage(page) {
       page = Math.max(1, Math.min(total, page));
       currentPage = page;
@@ -505,10 +589,19 @@
         else if (pageNum === page) p.style.zIndex = 100;
         else p.style.zIndex = 50 + (total - pageNum);
       });
-      if (indicator) indicator.textContent = page + ' / ' + total;
+      updateBookChrome();
+      flipbook.querySelectorAll('.book-toc-item').forEach(function (b, i) {
+        b.classList.toggle('book-toc-item--active', i + 1 === currentPage);
+      });
       prevBtn.disabled = page <= 1;
       nextBtn.disabled = page >= total;
     }
+
+    flipbook.querySelectorAll('.book-toc-item').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        goToPage(parseInt(btn.getAttribute('data-page'), 10));
+      });
+    });
 
     flipbook.addEventListener('click', function (e) {
       const nextBtnEl = e.target.closest('.book-page-next');
