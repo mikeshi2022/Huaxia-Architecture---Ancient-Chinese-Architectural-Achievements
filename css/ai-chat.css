@@ -13,7 +13,7 @@
 }
 .chat-container {
   width: 100%;
-  max-width: 720px;
+  max-width: min(1100px, 92vw);
   height: calc(100vh - 180px);
   min-height: 400px;
   display: flex;
@@ -64,7 +64,7 @@
   border-color: rgba(212, 168, 75, 0.4);
 }
 .chat-bubble {
-  max-width: 85%;
+  max-width: 92%;
   padding: 14px 18px;
   border-radius: 12px;
   line-height: 1.7;
@@ -76,6 +76,7 @@
   color: var(--paper);
 }
 .chat-msg-user .chat-bubble {
+  max-width: 85%;
   background: rgba(212, 168, 75, 0.15);
   border: 1px solid rgba(212, 168, 75, 0.35);
   color: var(--paper);

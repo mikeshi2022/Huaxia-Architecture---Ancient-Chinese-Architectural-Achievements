@@ -207,7 +207,7 @@ body::before {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 420px;
+  min-height: 480px;
 }
 
 .map-legend {
@@ -232,14 +232,14 @@ body::before {
 .dot.huangong { background: #d4a84b; }
 .dot.qiaoliang { background: #5b8fc4; }
 
-.map-chart { flex: 1; min-height: 350px; }
+.map-chart { flex: 1; min-height: 430px; }
 
 .carousel-area {
-  padding: 12px;
+  padding: 8px 12px;
   background: rgba(26, 26, 26, 0.5);
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  margin-top: 10px;
+  margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -968,6 +968,7 @@ body::before {
 /* 底部 */
 .footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
@@ -988,6 +989,39 @@ body::before {
 
 .footer-center { flex: 1; text-align: center; padding: 0 20px; }
 .footer-right { color: var(--gold); }
+
+/* 地图数据来源与审图号（页脚完整说明） */
+.footer-map-attribution {
+  flex: 1 1 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 0.78em;
+  line-height: 1.55;
+  color: rgba(245, 240, 230, 0.62);
+  padding-top: 8px;
+  margin-top: 4px;
+  border-top: 1px solid rgba(212, 168, 75, 0.12);
+}
+.footer-map-attribution a {
+  color: rgba(212, 168, 75, 0.92);
+  text-decoration: none;
+}
+.footer-map-attribution a:hover { text-decoration: underline; }
+
+/* 地图组件下方一行提示 */
+.map-source-hint {
+  margin: 0;
+  padding: 6px 8px 0;
+  font-size: 0.72em;
+  line-height: 1.45;
+  color: rgba(245, 240, 230, 0.52);
+  text-align: center;
+}
+.map-source-hint a {
+  color: rgba(212, 168, 75, 0.88);
+  text-decoration: none;
+}
+.map-source-hint a:hover { text-decoration: underline; }
 
 .building-list::-webkit-scrollbar { width: 4px; }
 .building-list::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
@@ -1577,8 +1611,8 @@ body::before {
   padding: 20px 0;
 }
 .book-flipbook {
-  width: 640px;
-  min-height: 440px;
+  width: 900px;
+  min-height: 540px;
   position: relative;
   perspective: 1800px;
   margin-bottom: 24px;
@@ -1589,8 +1623,8 @@ body::before {
   position: absolute;
   top: 0;
   left: 0;
-  width: 320px;
-  height: 420px;
+  width: 450px;
+  height: 500px;
   z-index: 0;
   background: linear-gradient(135deg, #ebe4d5 0%, #e2d9c8 30%, #ddd5c4 70%, #d8cfbe 100%);
   border: 1px solid rgba(139, 115, 85, 0.35);
@@ -1623,6 +1657,111 @@ body::before {
   align-items: center;
   justify-content: center;
   padding: 40px 28px;
+}
+.book-page-left .book-left-content.book-left-with-toc {
+  justify-content: flex-start;
+  padding: 16px 14px 14px;
+  align-items: stretch;
+}
+.book-page-left .book-left-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+.book-page-left .book-left-with-toc .book-left-seal {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 12px;
+  font-size: 0.68em;
+}
+.book-page-left .book-left-with-toc .book-left-title {
+  font-size: 1.15em;
+  margin-bottom: 6px;
+}
+.book-page-left .book-left-with-toc .book-left-sub {
+  font-size: 0.72em;
+  margin-bottom: 8px;
+}
+.book-left-toc {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 4px;
+}
+.book-toc-tagline {
+  margin: 0 0 8px;
+  font-size: 0.62em;
+  color: rgba(139, 115, 85, 0.65);
+  text-align: center;
+  font-family: "KaiTi", "STKaiti", serif;
+  letter-spacing: 0.08em;
+}
+.book-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  border-top: 1px solid rgba(139, 115, 85, 0.2);
+  padding-top: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 115, 85, 0.45) rgba(212, 168, 75, 0.12);
+}
+.book-toc-list::-webkit-scrollbar {
+  width: 6px;
+}
+.book-toc-list::-webkit-scrollbar-track {
+  background: rgba(212, 168, 75, 0.1);
+  border-radius: 4px;
+  margin: 2px 0;
+}
+.book-toc-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(139, 115, 85, 0.35), rgba(101, 82, 62, 0.55));
+  border-radius: 4px;
+  border: 1px solid rgba(212, 168, 75, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+.book-toc-list::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(139, 115, 85, 0.55), rgba(101, 82, 62, 0.75));
+}
+.book-toc-list li { margin-bottom: 4px; }
+.book-toc-item {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  text-align: left;
+  padding: 7px 8px;
+  border: 1px solid rgba(139, 115, 85, 0.28);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  font-family: "KaiTi", "STKaiti", "SimSun", serif;
+  font-size: clamp(13px, 1.1vw, 15px);
+  transition: background 0.2s, border-color 0.2s;
+}
+.book-toc-item:hover {
+  background: rgba(212, 168, 75, 0.22);
+  border-color: rgba(212, 168, 75, 0.45);
+}
+.book-toc-item--active {
+  background: rgba(212, 168, 75, 0.28);
+  border-color: rgba(196, 30, 58, 0.35);
+}
+.book-toc-idx {
+  flex-shrink: 0;
+  font-size: 0.92em;
+  color: rgba(139, 115, 85, 0.75);
+  min-width: 1.2em;
+}
+.book-toc-title {
+  font-size: 1.05em;
+  line-height: 1.48;
+  color: rgba(74, 61, 46, 0.92);
 }
 .book-page-left .book-left-seal {
   width: 72px;
@@ -1658,9 +1797,9 @@ body::before {
 .book-page {
   position: absolute;
   top: 0;
-  left: 320px;
-  width: 320px;
-  height: 420px;
+  left: 450px;
+  width: 450px;
+  height: 500px;
   transform-origin: left center;
   transform-style: preserve-3d;
   transition: transform 0.75s cubic-bezier(0.23, 0.48, 0.42, 0.96), z-index 0s 0.4s, filter 0.3s;
@@ -1751,13 +1890,28 @@ body::before {
   border-radius: 2px;
   font-family: "KaiTi", "STKaiti", serif;
 }
+.book-page-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  max-width: 62%;
+}
 .book-page-num {
-  font-size: 0.75em;
-  color: rgba(139, 115, 85, 0.6);
+  font-size: 0.72em;
+  color: rgba(139, 115, 85, 0.75);
   font-family: "KaiTi", "STKaiti", serif;
+  text-align: right;
+  line-height: 1.35;
+}
+.book-page-hint {
+  font-size: 0.62em;
+  color: rgba(139, 115, 85, 0.48);
+  font-family: "KaiTi", "STKaiti", serif;
+  letter-spacing: 0.06em;
 }
 .book-page-title {
-  font-size: 1.3em;
+  font-size: 1.38em;
   color: #4a3d2e;
   margin-bottom: 14px;
   font-weight: 600;
@@ -1768,7 +1922,7 @@ body::before {
 }
 .book-page-img {
   width: 100%;
-  height: 120px;
+  height: 160px;
   background: rgba(45, 90, 74, 0.2) center/cover no-repeat;
   border-radius: 4px;
   margin-bottom: 14px;
@@ -1777,8 +1931,8 @@ body::before {
 }
 .book-page-excerpt {
   flex: 1;
-  font-size: 0.9em;
-  line-height: 1.8;
+  font-size: 0.95em;
+  line-height: 1.85;
   color: #4a4035;
   margin-bottom: 12px;
   font-family: "KaiTi", "STKaiti", "SimSun", serif;
@@ -1813,21 +1967,40 @@ body::before {
 .book-controls {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 12px 24px;
+  gap: 16px;
+  padding: 12px 20px;
   background: rgba(26, 26, 26, 0.4);
   border-radius: 10px;
   border: 1px solid rgba(212, 168, 75, 0.2);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .book-btn {
-  padding: 10px 20px;
+  padding: 10px 16px;
+  min-width: 120px;
   background: rgba(212, 168, 75, 0.2);
   border: 1px solid rgba(212, 168, 75, 0.5);
   border-radius: 6px;
   color: var(--gold);
-  font-size: 0.95em;
+  font-size: 0.9em;
   cursor: pointer;
   transition: all 0.2s;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.book-btn-line { font-weight: 500; }
+.book-btn-ref {
+  font-size: 0.72em;
+  color: rgba(245, 240, 230, 0.65);
+  font-weight: 400;
+  line-height: 1.3;
+  max-width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .book-btn:hover:not(:disabled) {
   background: rgba(212, 168, 75, 0.35);
@@ -1837,13 +2010,16 @@ body::before {
   cursor: not-allowed;
 }
 .book-indicator {
-  font-size: 0.9em;
+  font-size: 0.85em;
   color: var(--text-light);
+  text-align: center;
+  max-width: 280px;
+  line-height: 1.45;
 }
 @media (max-width: 700px) {
-  .book-flipbook { width: 100%; max-width: 640px; min-width: 280px; }
-  .book-page-left { width: 50%; height: 400px; }
-  .book-page { left: 50%; width: 50%; height: 400px; }
+  .book-flipbook { width: 100%; max-width: 900px; min-width: 280px; }
+  .book-page-left { width: 50%; height: 440px; }
+  .book-page { left: 50%; width: 50%; height: 440px; }
 }
 
 /* 营造故事：古籍翻页时居中 */

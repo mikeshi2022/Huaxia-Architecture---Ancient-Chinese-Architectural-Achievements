@@ -30,29 +30,42 @@
   let pannellumViewer = null;
   let timelineChartInstance = null;
   let provinceChartInstance = null;
+  let pieChartInstance = null;
 
   function geoNameToProvince(geoName) {
     return GEO_TO_PROVINCE[geoName] || geoName.replace(/(省|市|自治区|特别行政区)$/, '').replace(/壮族|回族|维吾尔/g, '') || geoName;
   }
 
-  function getFilteredData() {
+  /**
+   * @param {{ ignoreProvince?: boolean }} [options] - ignoreProvince 为 true 时不应用地图选省（仅省份条形图使用，保持全国各省对比）
+   */
+  function getFilteredData(options) {
+    const ignoreProvince = options && options.ignoreProvince === true;
     return MAP_SCATTER_DATA.filter(d => {
       if (currentFilter.type !== 'all' && d.type !== currentFilter.type) return false;
       if (currentFilter.era !== 'all') {
         const eraMatch = d.era && d.era.includes(currentFilter.era);
         if (!eraMatch) return false;
       }
-      if (currentFilter.province !== 'all' && d.province !== currentFilter.province) return false;
+      if (!ignoreProvince && currentFilter.province !== 'all' && d.province !== currentFilter.province) return false;
       return true;
     });
   }
 
-  function initPieChart() {
-    const el = document.getElementById('chartPie');
-    if (!el || typeof echarts === 'undefined') return;
-    const chart = echarts.init(el);
-    const data = PIE_DATA.map(p => ({ ...p }));
-    chart.setOption({
+  function getPieSeriesData() {
+    const filtered = getFilteredData();
+    const keys = ['minju', 'guanfu', 'huangong', 'qiaoliang'];
+    return keys.map(key => ({
+      value: filtered.filter(d => d.type === key).length,
+      name: TYPE_NAMES[key],
+      itemStyle: { color: TYPE_COLORS[key] }
+    }));
+  }
+
+  function updatePieChart() {
+    if (!pieChartInstance) return;
+    const data = getPieSeriesData();
+    pieChartInstance.setOption({
       tooltip: { trigger: 'item' },
       legend: { show: false },
       series: [{
@@ -69,7 +82,14 @@
         data
       }]
     });
-    window.addEventListener('resize', () => chart.resize());
+  }
+
+  function initPieChart() {
+    const el = document.getElementById('chartPie');
+    if (!el || typeof echarts === 'undefined') return;
+    pieChartInstance = echarts.init(el);
+    updatePieChart();
+    window.addEventListener('resize', () => pieChartInstance && pieChartInstance.resize());
   }
 
   function initMapChart() {
@@ -115,6 +135,10 @@
           geo: {
             map: 'china',
             roam: false,
+            layoutCenter: ['50%', '56%'],
+            layoutSize: '98%',
+            zoom: 1.1,
+            aspectScale: 0.76,
             itemStyle: {
               areaColor: 'rgba(45, 90, 74, 0.2)',
               borderColor: 'rgba(212, 168, 75, 0.4)',
@@ -220,7 +244,7 @@
   }
 
   function getProvinceTopFromFiltered() {
-    const filtered = getFilteredData();
+    const filtered = getFilteredData({ ignoreProvince: true });
     const provinces = {};
     filtered.forEach(d => {
       if (d.province) provinces[d.province] = (provinces[d.province] || 0) + 1;
@@ -558,6 +582,7 @@
     renderBuildingList();
     updateCarousel();
     updateProvinceHint();
+    updatePieChart();
     updateTimelineChart();
     updateProvinceChart();
   }
