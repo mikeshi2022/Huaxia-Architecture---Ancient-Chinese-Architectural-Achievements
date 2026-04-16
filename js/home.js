@@ -175,7 +175,7 @@
       window.addEventListener('resize', function () { chart.resize(); });
     }
 
-    fetch('https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json')
+    fetch('data/china.json')
       .then(function (r) { return r.json(); })
       .then(function (geoJson) {
         echarts.registerMap('china', geoJson);
