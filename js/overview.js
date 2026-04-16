@@ -240,7 +240,7 @@
     if (typeof echarts === 'undefined') return Promise.reject(new Error('no echarts'));
     if (echarts.getMap && echarts.getMap('china')) return Promise.resolve();
     if (!chinaGeoPromise) {
-      chinaGeoPromise = fetch('https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json')
+      chinaGeoPromise = fetch('data/china.json')
         .then(r => r.json())
         .then(geoJson => {
           echarts.registerMap('china', geoJson);

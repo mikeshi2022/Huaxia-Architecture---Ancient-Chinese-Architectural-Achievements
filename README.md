@@ -6,7 +6,7 @@
 
 1. 用浏览器直接打开 `index.html`（首页）或者点击[华夏营造 - 中国古代建筑成就 · 1911年以前](https://mikeshi2022.github.io/Huaxia-Architecture---Ancient-Chinese-Architectural-Achievements/)即可浏览。
 2. **推荐**通过本地 HTTP 访问整站（例如 VS Code Live Server、`npx serve`），避免个别环境下 `file://` 路径或模块策略带来的差异。
-3. **需要联网**：首页背景视频、ECharts 中国地图 GeoJSON（`geo.datav.aliyun.com`）、部分页面引用的 **jsDelivr**（ECharts、Pannellum）及外链媒体；离线环境可能无法加载地图或脚本。
+3. **需要联网**：中国地图边界已随仓库提供为 `data/china.json`（同源加载，部署后无需再请求 DataV）。首页背景视频、部分页面引用的 **jsDelivr**（ECharts、Pannellum）及外链媒体仍依赖网络；完全离线时地图可显示，脚本/CDN 资源可能不可用。
 
 ## 页面导览
 

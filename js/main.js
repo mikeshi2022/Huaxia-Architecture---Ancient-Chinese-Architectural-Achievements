@@ -199,7 +199,7 @@
       }
     });
 
-    fetch('https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json')
+    fetch('data/china.json')
       .then(r => r.json())
       .then(geoJson => {
         echarts.registerMap('china', geoJson);
