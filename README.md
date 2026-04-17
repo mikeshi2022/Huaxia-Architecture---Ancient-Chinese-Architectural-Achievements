@@ -4,9 +4,10 @@
 
 ## 如何运行
 
-1. 用浏览器直接打开 `index.html`（首页）或者点击[华夏营造 - 中国古代建筑成就 · 1911年以前](https://mikeshi2022.github.io/Huaxia-Architecture---Ancient-Chinese-Architectural-Achievements/)即可浏览。
-2. **推荐**通过本地 HTTP 访问整站（例如 VS Code Live Server、`npx serve`），避免个别环境下 `file://` 路径或模块策略带来的差异。
-3. **需要联网**：中国地图边界已随仓库提供为 `data/china.json`（同源加载，部署后无需再请求 DataV）。首页背景视频、部分页面引用的 **jsDelivr**（ECharts、Pannellum）及外链媒体仍依赖网络；完全离线时地图可显示，脚本/CDN 资源可能不可用。
+1. **本地开发（推荐）**：用 **HTTP** 打开整站，例如 VS Code **Live Server**、或在项目根目录执行 `npx serve`、`python -m http.server 8080`，再访问 `http://127.0.0.1:…/index.html`。  
+   地图通过 `fetch('data/china.json')` 加载；若用 **`file://` 直接双击 HTML**，多数浏览器会拦截本地 `fetch`，导致**只有散点、没有省界底图**。
+2. **在线演示**：[华夏营造 - 中国古代建筑成就 · 1911年以前](https://mikeshi2022.github.io/Huaxia-Architecture---Ancient-Chinese-Architectural-Achievements/)
+3. **联网说明**：省界几何数据已内置为 `data/china.json`（来源：阿里云 DataV 公开边界，随仓库部署即可，无需浏览器再请求 DataV）。首页视频、**jsDelivr**上的 ECharts / Pannellum 及部分外链图片仍依赖网络；若脚本未加载成功，地图与其它图表也无法正常显示。
 
 ## 页面导览
 
@@ -28,7 +29,7 @@
 
 - **前端**：HTML5、CSS3、原生 JavaScript（IIFE 模块化）。
 - **可视化**：ECharts 5（地图散点、柱状图、饼图等）；部分实景预览使用 Pannellum（CDN）。
-- **数据**：集中于 `js/data.js`（建筑点位、工艺、时间轴配置等）；各页面逻辑见 `js/*.js`。
+- **数据**：建筑与工艺等业务数据在 `js/data.js`；中国地图 **GeoJSON** 在 `data/china.json`（供 ECharts `registerMap`）。各页面逻辑见 `js/*.js`。
 
 ### 主要脚本
 
@@ -48,7 +49,7 @@
 
 ## 数据与声明
 
-页脚说明：**《营造法式》《清式营造则例》及各地文物保护名录**；建筑示意图采用公开图片。中国省级示意底图数据来自 **阿里云 DataV**；地图审图号等以地图与资质公示方最新说明为准。
+页脚说明：**《营造法式》《清式营造则例》及各地文物保护名录**；建筑示意图采用公开图片。省级界划几何数据源自 **阿里云 DataV** 公开边界，本项目拷贝为 `data/china.json` 随仓库分发；地图审图号等以地图与资质公示方最新说明为准。
 
 ## 浏览器建议
 
