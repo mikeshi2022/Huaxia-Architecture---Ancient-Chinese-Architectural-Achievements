@@ -65,6 +65,9 @@
       if (t && t.tagName === 'SPAN' && t.textContent) {
         const kw = t.textContent.trim();
         if (CRAFT_KEYWORDS.includes(kw)) {
+          try {
+            sessionStorage.setItem('huaxia_craft_detail_keyword', kw);
+          } catch (e) { /* ignore */ }
           location.href = 'craft-detail.html?keyword=' + encodeURIComponent(kw);
         }
       }

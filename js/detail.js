@@ -5,10 +5,32 @@
 (function () {
   const TYPE_NAMES = { minju: '民居', guanfu: '官府', huangong: '皇宫', qiaoliang: '桥梁' };
   const TYPE_COLORS = { minju: '#4a9c82', guanfu: '#c41e3a', huangong: '#d4a84b', qiaoliang: '#5b8fc4' };
+  const DETAIL_NAME_STORAGE_KEY = 'huaxia_detail_building_name';
+
+  /** 优先 URL ?name=；若无（如 serve cleanUrls 重定向丢参）则读一次性 sessionStorage */
+  function resolveDetailBuildingName() {
+    const params = new URLSearchParams(window.location.search);
+    let name = params.get('name');
+    if (name) {
+      try {
+        name = decodeURIComponent(name);
+      } catch (e) { /* 保持原样 */ }
+      name = String(name).trim();
+      return name || null;
+    }
+    try {
+      const stored = sessionStorage.getItem(DETAIL_NAME_STORAGE_KEY);
+      if (stored) {
+        sessionStorage.removeItem(DETAIL_NAME_STORAGE_KEY);
+        return String(stored).trim() || null;
+      }
+    } catch (e) { /* ignore */ }
+    return null;
+  }
 
   function getBuildingByName(name) {
-    if (!name) return null;
-    return MAP_SCATTER_DATA.find(x => x.name === decodeURIComponent(name));
+    if (!name || typeof MAP_SCATTER_DATA === 'undefined') return null;
+    return MAP_SCATTER_DATA.find(x => x.name === name);
   }
 
   function getRelatedBuildings(d, limit = 4) {
@@ -268,8 +290,7 @@
   }
 
   function init() {
-    const params = new URLSearchParams(window.location.search);
-    const name = params.get('name');
+    const name = resolveDetailBuildingName();
     const d = getBuildingByName(name);
     renderDetail(d);
   }
