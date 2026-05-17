@@ -2,8 +2,30 @@
  * 技艺介绍页 - 工艺详情 + ECharts 力导向关系图
  */
 (function () {
-  const params = new URLSearchParams(location.search);
-  const keyword = params.get('keyword') || '';
+  const CRAFT_KEYWORD_STORAGE_KEY = 'huaxia_craft_detail_keyword';
+
+  /** 优先 URL ?keyword=；若无则读一次性 sessionStorage（与 detail-link-persist.js 配合） */
+  function resolveCraftKeyword() {
+    const params = new URLSearchParams(location.search);
+    let kw = params.get('keyword');
+    if (kw) {
+      try {
+        kw = decodeURIComponent(kw);
+      } catch (e) { /* 保持原样 */ }
+      kw = String(kw).trim();
+      if (kw) return kw;
+    }
+    try {
+      const stored = sessionStorage.getItem(CRAFT_KEYWORD_STORAGE_KEY);
+      if (stored) {
+        sessionStorage.removeItem(CRAFT_KEYWORD_STORAGE_KEY);
+        return String(stored).trim();
+      }
+    } catch (e) { /* ignore */ }
+    return '';
+  }
+
+  const keyword = resolveCraftKeyword();
 
   const ALL_BUILDINGS = [
     ...MINJU_DATA.map(d => ({ ...d, type: 'minju' })),
@@ -140,7 +162,11 @@
         });
         chart.on('click', (e) => {
           if (e.data && e.data.name && CRAFT_KEYWORDS.includes(e.data.name) && e.data.name !== keyword) {
-            location.href = 'craft-detail.html?keyword=' + encodeURIComponent(e.data.name);
+            const next = e.data.name;
+            try {
+              sessionStorage.setItem(CRAFT_KEYWORD_STORAGE_KEY, next);
+            } catch (err) { /* ignore */ }
+            location.href = 'craft-detail.html?keyword=' + encodeURIComponent(next);
           }
         });
       } else {
